@@ -1,5 +1,33 @@
-abstract class NewsStates{}
+abstract class NewsStates {}
 
-class NewsInitialState extends NewsStates{}
+class NewsInitialState extends NewsStates {}
 
-class NewsBottomNavState extends NewsStates{}
+class NewsBottomNavState extends NewsStates {}
+
+class NewsGetBusinessLoadingState extends NewsStates{}
+
+class NewGetBusinessSuccessState extends NewsStates {}
+
+class NewGetBusinessErrorState extends NewsStates {
+  final String error;
+  NewGetBusinessErrorState(this.error);
+}
+
+class NewsGetSportsLoadingState extends NewsStates{}
+
+class NewGetSportsSuccessState extends NewsStates {}
+
+class NewGetSportsErrorState extends NewsStates {
+  final String error;
+  NewGetSportsErrorState(this.error);
+}
+
+class NewsGetScienceLoadingState extends NewsStates{}
+
+class NewGetScienceSuccessState extends NewsStates {}
+
+class NewGetScienceErrorState extends NewsStates {
+  final String error;
+  NewGetScienceErrorState(this.error);
+}
+

@@ -41,6 +41,8 @@ dependencies:
   flutter_bloc: ^8.1.1
   bloc:
   conditional_builder_null_safety:
+  dio: ^4.0.6
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
