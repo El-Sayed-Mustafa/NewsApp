@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../cubit/states.dart';
 
-Widget BuildArticleItem(article) => Padding(
+Widget BuildArticleItem(article,context) => Padding(
       padding: const EdgeInsets.all(15.0),
       child: Row(
         children: [
@@ -32,8 +32,7 @@ Widget BuildArticleItem(article) => Padding(
                   Expanded(
                     child: Text(
                       '${article['title']}',
-                      style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.w600),
+                      style: Theme.of(context).textTheme.bodyText1,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -53,11 +52,11 @@ Widget BuildArticleItem(article) => Padding(
       ),
     );
 
-Widget artilceBuilder(list) => ConditionalBuilder(
+Widget artilceBuilder(list,context) => ConditionalBuilder(
     condition: list.length > 0,
     builder: (context) => ListView.separated(
           physics: BouncingScrollPhysics(),
-          itemBuilder: (context, index) => BuildArticleItem(list[index]),
+          itemBuilder: (context, index) => BuildArticleItem(list[index],context),
           separatorBuilder: (context, index) => Container(
             height: 1,
             color: Colors.grey[300],

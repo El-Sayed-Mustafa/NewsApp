@@ -31,3 +31,4 @@ class NewGetScienceErrorState extends NewsStates {
   NewGetScienceErrorState(this.error);
 }
 
+
