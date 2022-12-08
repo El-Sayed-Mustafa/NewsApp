@@ -1,5 +1,8 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../../cubit/states.dart';
 
 Widget BuildArticleItem(article) => Padding(
       padding: const EdgeInsets.all(15.0),
@@ -11,10 +14,9 @@ Widget BuildArticleItem(article) => Padding(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 image: DecorationImage(
-                  fit: BoxFit.cover,
-                    image: NetworkImage('${article['urlToImage'] ?? 'https://avatars.githubusercontent.com/u/110793510?v=4'}')
-                ),
-
+                    fit: BoxFit.cover,
+                    image: NetworkImage(
+                        '${article['urlToImage'] ?? 'https://avatars.githubusercontent.com/u/110793510?v=4'}')),
               )),
           const SizedBox(
             width: 20,
@@ -50,3 +52,16 @@ Widget BuildArticleItem(article) => Padding(
         ],
       ),
     );
+
+Widget artilceBuilder(list) => ConditionalBuilder(
+    condition: list.length > 0,
+    builder: (context) => ListView.separated(
+          physics: BouncingScrollPhysics(),
+          itemBuilder: (context, index) => BuildArticleItem(list[index]),
+          separatorBuilder: (context, index) => Container(
+            height: 1,
+            color: Colors.grey[300],
+          ),
+          itemCount: list.length,
+        ),
+    fallback: (context) => Center(child: CircularProgressIndicator()));

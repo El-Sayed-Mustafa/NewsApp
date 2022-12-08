@@ -15,20 +15,7 @@ class ScienceScreen extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           var list = NewsCubit.get(context).science;
-          return ConditionalBuilder(
-              condition: state is! NewsGetBusinessLoadingState,
-              builder: (context) => ListView.separated(
-                    physics: BouncingScrollPhysics(),
-                    itemBuilder: (context, index) =>
-                        BuildArticleItem(list[index]),
-                    separatorBuilder: (context, index) => Container(
-                      height: 1,
-                      color: Colors.grey[300],
-                    ),
-                    itemCount: list.length,
-                  ),
-              fallback: (context) =>
-                  Center(child: CircularProgressIndicator()));
+          return artilceBuilder(list);
         });
   }
 }
