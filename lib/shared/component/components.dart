@@ -1,10 +1,8 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../cubit/states.dart';
 
-Widget BuildArticleItem(article,context) => Padding(
+Widget buildArticleItem(article, context) => Padding(
       padding: const EdgeInsets.all(15.0),
       child: Row(
         children: [
@@ -52,15 +50,65 @@ Widget BuildArticleItem(article,context) => Padding(
       ),
     );
 
-Widget artilceBuilder(list,context) => ConditionalBuilder(
+Widget defaultFormField({
+  required TextEditingController controller,
+  required TextInputType type,
+  Function? onSubmit,
+  required Function onChange,
+  required Function onTap,
+  bool isPassword = false,
+  required Function validate,
+  required String label,
+  required IconData prefix,
+  IconData? suffix,
+  Function? suffixPressed,
+  bool isClickable = true,
+}) =>
+    TextFormField(
+      controller: controller,
+      keyboardType: type,
+      obscureText: isPassword,
+      enabled: isClickable,
+      onFieldSubmitted: (value) {},
+      onChanged: (value) {
+        return onChange(value);
+      },
+      onTap: () {
+        onTap();
+      },
+      validator: (value) {
+        return validate(value);
+      },
+      decoration: InputDecoration(
+        labelText: label,
+        prefixIcon: Icon(
+          prefix,
+        ),
+        suffixIcon: suffix != null
+            ? IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  suffix,
+                ),
+              )
+            : null,
+        border: const OutlineInputBorder(),
+      ),
+    );
+
+Widget articleBuilder(list, context) => ConditionalBuilder(
     condition: list.length > 0,
     builder: (context) => ListView.separated(
-          physics: BouncingScrollPhysics(),
-          itemBuilder: (context, index) => BuildArticleItem(list[index],context),
+          physics: const BouncingScrollPhysics(),
+          itemBuilder: (context, index) =>
+              buildArticleItem(list[index], context),
           separatorBuilder: (context, index) => Container(
             height: 1,
             color: Colors.grey[300],
           ),
           itemCount: list.length,
         ),
-    fallback: (context) => Center(child: CircularProgressIndicator()));
+    fallback: (context) => const Center(child: CircularProgressIndicator()));
+
+void navigateTo(context, widget) =>
+    Navigator.push(context, MaterialPageRoute(builder: (context) => widget));
