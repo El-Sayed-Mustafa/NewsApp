@@ -40,9 +40,9 @@ class NewsCubit extends Cubit<NewsStates> {
 
   void changeBottomNavBar(int index) {
     currentIndex = index;
-    if(currentIndex == 1)
+    if (currentIndex == 1)
       getSports();
-    else if (currentIndex==2)
+    else if (currentIndex == 2)
       getScience();
     else
       getBusiness();
@@ -52,7 +52,6 @@ class NewsCubit extends Cubit<NewsStates> {
   List<dynamic> business = [];
 
   void getBusiness() {
-
     emit(NewsGetBusinessLoadingState());
 
     DioHelper.getData(url: 'v2/top-headlines', query: {
@@ -73,7 +72,6 @@ class NewsCubit extends Cubit<NewsStates> {
   List<dynamic> sports = [];
 
   void getSports() {
-
     emit(NewsGetSportsLoadingState());
 
     DioHelper.getData(url: 'v2/top-headlines', query: {
@@ -94,7 +92,6 @@ class NewsCubit extends Cubit<NewsStates> {
   List<dynamic> science = [];
 
   void getScience() {
-
     emit(NewsGetScienceLoadingState());
 
     DioHelper.getData(url: 'v2/top-headlines', query: {
@@ -111,7 +108,4 @@ class NewsCubit extends Cubit<NewsStates> {
       emit(NewGetScienceErrorState(error.toString()));
     });
   }
-
-
-
 }

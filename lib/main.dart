@@ -10,21 +10,31 @@ import 'package:news_app/shared/observer/observer.dart';
 
 import 'cubit/cubit.dart';
 import 'layout/news_layout.dart';
+import 'network/local/cash_helper.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
-  runApp(const MyApp());
+  await CashHelper.init();
+
+  bool? isDark = CashHelper.getData(key: 'isDark');
+
+  runApp( MyApp(isDark!));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
+   bool isDark ;
+
+  MyApp(this.isDark);
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context)=>AppCubit(),
+      create: (BuildContext context)=>AppCubit()..changeAppMode(
+        fromShared: isDark,
+      ),
       child: BlocConsumer<AppCubit,AppStates>(
         listener: (context, state) {},
         builder:(context, state) {
