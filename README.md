@@ -1,16 +1,12 @@
 # news_app
 
-A new Flutter project.
+Using APIs, Shared Preference, Dio Helper, WebView and Bloc State Mangment 
 
-## Getting Started
+![94aa6656-5126-400d-b55f-c6360c1a08bf](https://user-images.githubusercontent.com/110793510/206863166-8584edd6-edcc-40d8-ad2f-959f679665de.jpg)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+![4a59cf12-8cbb-49a0-8d5f-134ab37efa77](https://user-images.githubusercontent.com/110793510/206863177-149b7bcd-1ae4-4300-b66c-deb5660d2139.jpg)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+![8ed772e4-7dcd-47d4-9770-dd23155abff6](https://user-images.githubusercontent.com/110793510/206863174-455c2bfb-bb78-4760-b156-2fd7fc3b3265.jpg)
