@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:news_app/cubit/AppStates.dart';
 import 'package:news_app/cubit/app_cubit.dart';
-import 'package:news_app/cubit/states.dart';
 import 'package:news_app/network/remote/dio_helper.dart';
 import 'package:news_app/shared/observer/observer.dart';
 
@@ -20,11 +18,11 @@ void main() async {
 
   bool? isDark = CashHelper.getData(key: 'isDark');
 
-  runApp(MyApp(isDark!));
+  runApp(MyApp(isDark));
 }
 
 class MyApp extends StatelessWidget {
-  bool isDark;
+  bool? isDark;
 
   MyApp(this.isDark);
 
